@@ -1,0 +1,10 @@
+.form {
+    display: grid;
+    grid-gap: 15px;
+    justify-content: center;
+    grid-auto-rows: minmax(50px, max-content);
+
+    .error {
+        color: red;
+    }
+}

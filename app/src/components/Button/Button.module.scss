@@ -1,0 +1,32 @@
+@import "../../App.scss";
+
+.button {
+    border-radius: 10px;
+    text-align: center;
+    display: inline;
+    cursor: pointer;
+
+    @include box-shadow(1);
+
+    > a,
+    > span {
+        display: grid;
+        height: 100%;
+        align-content: center;
+        color: white;
+        text-decoration: none;
+    }
+
+    @for $i from 0 through 5 {
+        &.color-#{$i} {
+            @include color(#{$i});
+
+            @if $i == 0 or $i == 5 {
+                > a,
+                > span {
+                    color: var(--color-6);
+                }
+            }
+        }
+    }
+}

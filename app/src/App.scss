@@ -1,0 +1,45 @@
+:root {
+    // https://coolors.co/05668d-028090-00a896-02c39a-f0f3bd
+    --color-0: #fff;
+    --color-1: #05668d;
+    --color-2: #028090;
+    --color-3: #00a896;
+    --color-4: #02c39a;
+    --color-5: #f0f3bd;
+    --color-6: #333;
+    --color-7: #eee;
+
+    --box-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --box-shadow-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    --box-shadow-3: 0 10px 20px rgba(0, 0, 0, 0.19),
+        0 6px 6px rgba(0, 0, 0, 0.23);
+    --box-shadow-4: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    --box-shadow-5: 0 19px 38px rgba(0, 0, 0, 0.3),
+        0 15px 12px rgba(0, 0, 0, 0.22);
+    --box-shadow-hover: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@mixin color($number) {
+    background-color: var(--color-#{$number});
+}
+
+@mixin box-shadow($level) {
+    box-shadow: var(--box-shadow-#{$level});
+    transition: var(--transition);
+    &:hover {
+        box-shadow: var(--box-shadow-#{$level + 1});
+    }
+}
+
+.App {
+    text-align: center;
+    margin: 2rem;
+}
+
+.container {
+    text-align: center;
+}

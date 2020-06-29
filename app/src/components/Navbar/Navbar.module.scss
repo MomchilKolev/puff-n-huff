@@ -1,0 +1,19 @@
+.navbar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    text-align: center;
+    box-shadow: 0 2px 2px 2px #eee;
+    z-index: 2;
+    position: relative;
+
+    > a {
+        text-decoration: none;
+        color: #333;
+        padding: 10px;
+        transition: 0.13s;
+
+        &:hover {
+            background-color: #eee;
+        }
+    }
+}

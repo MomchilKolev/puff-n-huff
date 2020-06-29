@@ -1,0 +1,202 @@
+@import "../../App.scss";
+
+// TODO: Refactor this
+.mj {
+    @include box-shadow(1);
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-rows: minmax(360px, 1fr);
+
+    .mj-view {
+        grid-row: 1/2;
+        grid-column: 1/2;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+
+        &.inactive {
+            filter: blur(8px);
+        }
+        .image-container {
+            display: grid;
+            grid-template-rows: 30px 30px minmax(200px, 300px);
+            grid-template-columns: 1fr;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #eee;
+            padding: 5px;
+
+            .strainType {
+                grid-row: 1/2;
+                grid-column: 1/2;
+                justify-self: end;
+            }
+
+            .state {
+                grid-row: 2/3;
+                grid-column: 1/2;
+                justify-self: end;
+            }
+
+            .offer {
+                grid-column: 1/2;
+                justify-self: end;
+                align-self: end;
+                background-color: #059033;
+                color: white;
+                padding: 5px;
+                border-radius: 5px;
+            }
+
+            .image {
+                grid-row: 1/-1;
+                grid-column: 1/-1;
+            }
+        }
+
+        @for $i from 1 through 7 {
+            .state-#{$i} {
+                @include color(#{$i});
+                padding: 5px;
+                border-radius: 10%;
+
+                @if $i != 5 and $i != 7 {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .mj-hidden {
+        grid-row: 1/2;
+        grid-column: 1/2;
+        padding: 10px;
+        opacity: 0;
+        z-index: 0;
+        transition: 0.13s;
+
+        display: grid;
+
+        &.active {
+            opacity: 0.8;
+            z-index: 2;
+            background-color: white;
+        }
+    }
+    
+
+    &.producer .mj-hidden {
+
+        grid-auto-rows: minmax(max-content, 50px);
+        grid-gap: 5px;
+        justify-content: center;
+
+        .state {
+            @include color(3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+            @include box-shadow(1);
+
+            &:hover {
+                @include box-shadow(2);
+            }
+        }
+        @for $i from 1 through 7 {
+            .state-#{$i} {
+                @include color(#{$i});
+
+                @if $i != 5 and $i != 7 {
+                    color: white;
+                }
+            }
+        }
+
+    }
+
+    &.producer-sold .mj-hidden {
+        justify-content: center;
+        align-items: center;
+
+        .send-container {
+
+            display: grid;
+            grid-gap: 20px;
+
+            .send {
+                padding: 16px 20px;
+                @include color(6);
+                color: white;
+                border-radius: 5px;
+                font-weight: bold;
+                border: none;
+                font-size: 1.4rem;
+                cursor: pointer;
+                @include box-shadow(1);
+            }
+
+            .error {
+                color: red;
+            }
+        }
+    }
+
+    &.consumer .mj-hidden {
+
+        justify-content: center;
+        align-items: center;
+
+        .buy-container {
+
+            display: grid;
+            grid-gap: 20px;
+
+            .buy {
+                padding: 16px 20px;
+                background-color: #059033;
+                color: white;
+                border-radius: 5px;
+                font-weight: bold;
+                border: none;
+                font-size: 1.4rem;
+                cursor: pointer;
+                @include box-shadow(1);
+            }
+
+            .error {
+                color: red;
+            }
+        }
+    }
+
+    &.my-purchases .mj-hidden {
+
+        justify-content: center;
+        align-items: center;
+
+        .my-purchases-container {
+
+            display: grid;
+            grid-gap: 20px;
+
+            .receive {
+                padding: 16px 20px;
+                @include color(7);
+                border-radius: 5px;
+                font-weight: bold;
+                border: none;
+                font-size: 1.4rem;
+                cursor: pointer;
+                @include box-shadow(1);
+            }
+
+            .error {
+                color: red;
+            }
+        }
+    }
+}

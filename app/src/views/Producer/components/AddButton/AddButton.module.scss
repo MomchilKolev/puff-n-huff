@@ -1,0 +1,17 @@
+@import "../../../../App.scss";
+
+.add-button {
+    position: absolute;
+    z-index: 2;
+    left: calc(100vw - 100px);
+    top: calc(100vh - 100px);
+    svg {
+        border-radius: 50%;
+        cursor: pointer;
+        @include box-shadow(1);
+
+        &:hover {
+            @include box-shadow(2);
+        }
+    }
+}
